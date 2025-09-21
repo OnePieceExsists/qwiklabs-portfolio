@@ -2,7 +2,7 @@
 
 > **Platform:** Qwiklabs  
 > **Skill Area:** Linux, Security, Network Analysis  
-> **Date Completed:** YYYY-MM-DD  
+> **Date Completed:** 19-09-2025
 > **Difficulty:** Introductory  
 
 ---
