@@ -106,8 +106,6 @@ Completion screenshots are available in the screenshots/ folder:
 
 🔗 References
 
-Qwiklabs Lab Link
+Qwiklabs Lab Link: 
+https://www.cloudskillsboost.google/focuses/44029868?parent=lti_session&parent=lti_session
 
-GNU Coreutils Manual: https://www.gnu.org/software/coreutils/manual/
-
-Nano Editor Documentation: https://www.nano-editor.org/docs.php
