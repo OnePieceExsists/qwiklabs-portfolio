@@ -52,55 +52,55 @@ Practical use of Wireshark in incident response contexts
 Below are the screenshots captured during the lab to demonstrate key steps and findings:
 
 -Wireshark was launched and the sample .pcap file was opened. This provided an overview of captured packets, showing columns for source, destination, protocol, and additional packet info.
-![Screenshot 1](images/01_opening_wireshark.png)
+![Screenshot 1](screenshots/01_opening_wireshark.png)
 
 -A display filter ip.addr == 142.250.1.139 was applied to isolate traffic between the local system and the target IP address. The packet list reduced to only relevant entries for easier inspection.
-![Screenshot 2](images/02_applying_ip_addr_search.png)
+![Screenshot 2](screenshots/02_applying_ip_addr_search.png)
 
 -A TCP packet was selected for detailed inspection, displaying the Transmission Control Protocol layer. The TCP destination port was identified as 80, confirming HTTP communication.
-![Screenshot 3](images/03_tcp_search.png)
+![Screenshot 3](screenshots/03_tcp_search.png)
 
 -The Frame subtree was expanded to view physical-level details such as arrival time, frame length, and total captured bytes. The frame length for this packet was confirmed as 54 bytes.
-![Screenshot 4](images/04_frame_search.png)
+![Screenshot 4](screenshots/04_frame_search.png)
 
 -The Ethernet II layer was explored to identify the source and destination MAC addresses. This information reveals which devices on the network were involved in the communication.
-![Screenshot 5](images/05_ethernet_search.png)
+![Screenshot 5](screenshots/05_ethernet_search.png)
 
 -The Internet Protocol Version 4 (IPv4) layer was expanded to display the source and destination IP addresses, protocol type, and header length—which was found to be 20 bytes.
-![Screenshot 6](images/06_ipv4_seaerch.png)
+![Screenshot 6](screenshots/06_ipv4_seaerch.png)
 
 -The TCP destination port field was reviewed, showing port 80, which is the default port for HTTP web traffic. This confirmed that the packets represented standard web browsing activity.
-![Screenshot 7](images/07_destination_port_search.png)
+![Screenshot 7](screenshots/07_destination_port_search.png)
 
 -The filter ip.src == 142.250.1.139 was applied to display only packets originating from the specified IP address. This allowed analysis of outgoing traffic from the remote web server.
-![Screenshot 8](images/08_ip_source_search.png)
+![Screenshot 8](screenshots/08_ip_source_search.png)
 
 -The filter ip.dst == 142.250.1.139 was used to isolate packets sent to the target IP. This step focused on inbound traffic from the local system to the web host.
-![Screenshot 9](images/09_ip_destination_search.png)
+![Screenshot 9](screenshots/09_ip_destination_search.png)
 
 -The filter eth.addr == 42:01:ac:15:e0:02 was used to isolate packets containing a specific Ethernet MAC address. This narrowed down communication between devices at the data link layer.
-![Screenshot 10](images/10_mac_address_search.png)
+![Screenshot 10](screenshots/10_mac_address_search.png)
 
 -Within the Ethernet II subtree, the source and destination MAC addresses were verified. The corresponding IPv4 subtree revealed that the internal protocol carried in these packets was TCP.
-![Screenshot 11](images/11_mac_address_source_and_destination_ports.png)
+![Screenshot 11](screenshots/11_mac_address_source_and_destination_ports.png)
 
 -The Time to Live (TTL) field within the IPv4 header was examined. The TTL value of 64 indicated the packet’s lifespan across network hops before expiration.
-![Screenshot 12](images/12_time_to_live.png)
+![Screenshot 12](screenshots/12_time_to_live.png)
 
 -A UDP filter udp.port == 53 was applied to capture DNS-related traffic. This step isolated packets containing DNS queries and responses between the client and DNS server.
-![Screenshot 13](images/13_udp_port_search.png)
+![Screenshot 13](screenshots/13_udp_port_search.png)
 
 -Inside the DNS query packet, the Queries section was expanded, revealing that the requested domain was opensource.google.com. This confirmed the user’s attempt to resolve the domain name.
-![Screenshot 14](images/14_udp_domain_queries.png)
+![Screenshot 14](screenshots/14_udp_domain_queries.png)
 
 -In the DNS response packet, the Answers section showed the IP resolution for opensource.google.com, returning the address 142.250.1.139 from the DNS server.
-![Screenshot 15](images/15_udp_domain_answers.png)
+![Screenshot 15](screenshots/15_udp_domain_answers.png)
 
 -A TCP filter tcp.port == 80 was used to isolate HTTP packets. The packet details confirmed standard web communication with a destination address of 169.254.169.254 and frame length of 54 bytes.
-![Screenshot 16](images/16_tcp_port_search.png)
+![Screenshot 16](screenshots/16_tcp_port_search.png)
 
 -Finally, the filter tcp contains "curl" located packets containing the text “curl” in their payload. This confirmed the presence of a web request made using the curl command-line tool within the capture.
-![Screenshot 17](images/17_contains_curl_search.png)
+![Screenshot 17](screenshots/17_contains_curl_search.png)
 
 ✅ Conclusion
 
