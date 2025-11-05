@@ -42,7 +42,7 @@ cat file2.txt
 
 At first glance, both files appeared almost identical, but even a single character difference can change a hash completely.
 
-![Reading both files](screenshots/001_reading_both_files.png)
+![Reading both files](screenshots/01_reading_both_files.png)
 
 # Step 3 – Generate Hash Values
 
