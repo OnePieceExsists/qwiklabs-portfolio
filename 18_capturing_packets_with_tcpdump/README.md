@@ -55,7 +55,7 @@ Next, I used tcpdump to list all available capture interfaces:
 
 sudo tcpdump -D
 
-![screenshot 1](01_identify_network_interfaces.png)
+![screenshot 1](screenshots/01_identify_network_interfaces.png)
 
 This is helpful on systems where ifconfig is not available.
 
@@ -68,7 +68,7 @@ To capture and display live network traffic from eth0, I ran:
 
 sudo tcpdump -i eth0 -v -c5
 
-![screenshot 2](02_inspect_live_network_traffic.png)
+![screenshot 2](screenshots/02_inspect_live_network_traffic.png)
 
 Explanation of flags:
 
@@ -107,7 +107,7 @@ To capture only HTTP (port 80) traffic into a .pcap file, I used:
 
 sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap &
 
-![screenshot 3](03_write_and_save_captured_network_traffic_to_a_file.png)
+![screenshot 3](screenshots/03_write_and_save_captured_network_traffic_to_a_file.png)
 
 Explanation of flags:
 
@@ -130,7 +130,7 @@ To verify the capture file:
 
 ls -l capture.pcap
 
-![screenshot 4](04_verifying_captured_file.png)
+![screenshot 4](screenshots/04_verifying_captured_file.png)
 
 ✔ Task 3 complete: The file capture.pcap was successfully created and contained the expected packet data.
 
@@ -141,7 +141,7 @@ I then loaded the previously captured .pcap file with tcpdump to view header det
 
 sudo tcpdump -nn -r capture.pcap -v
 
-![screenshot 5](05_file_header_details.png)
+![screenshot 5](screenshots/05_file_header_details.png)
 
 This provided:
 
@@ -160,7 +160,7 @@ Next, I examined the hexadecimal and ASCII representation of packet contents usi
 
 sudo tcpdump -nn -r capture.pcap -X
 
-![screenshot 6](06_hexadezimal_ascii_configuration_of_packet.png)
+![screenshot 6](screenshots/06_hexadezimal_ascii_configuration_of_packet.png)
 
 This format is commonly used in:
 
