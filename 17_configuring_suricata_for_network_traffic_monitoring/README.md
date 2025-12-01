@@ -51,25 +51,39 @@ Understand the concept of a network flow and use the unique flow_id to correlate
 Below are the steps and screenshots captured during the lab to demonstrate key configurations and findings:
 
 
-  **Task 1: Examine a custom rule in Suricata**
-    * The `cat custom.rules` command was used to display the network traffic rule.
-    * This rule was dissected to understand its three components: **Action** (`alert`), **Header**, and **Rule Options**.
-    ![Screenshot 1](screenshots/01_action_header_rule_options.png)
-  **Task 2: Trigger a custom rule in Suricata**
-    * The `ls -l /var/log/suricata` command showed no files were present before execution.
-    * Suricata was executed using the command: `sudo suricata -r sample.pcap -S custom.rules -k none`. 
-    ![Screenshot 2](screenshots/02_no_files_present_before_execution.png)
-    * The subsequent `cat /var/log/suricata/fast.log` command displayed the alert entries triggered by the rule, confirming two instances of **"GET on wire"** alerts. 
-    ![Screenshot 3](screenshots/03_allert_entries_triggered_by_the_rule.png)
-  **Task 3: Examine eve.json output**
-    * The raw content of the `eve.json` file was displayed using `cat /var/log/suricata/eve.json`. 
-    ![Screenshot 4](screenshots/04_raw_content_eve_json_file.png)
-    * The `jq . /var/log/suricata/eve.json | less` command was used to format the JSON data, making it readable. 
-    ![Screenshot 5](screenshots/05_formating_json_data_easier_to_read.png)
-    * The `jq -c "[.timestamp,.flow_id,.alert.signature,.proto,.dest_ip]" /var/log/suricata/eve.json` command extracted key fields for easier correlation. 
-    ![Screenshot 6](screenshots/06_extracting_b_key_fields.png)
-    * A final, targeted query using `jq "select(.flow_id==X)" /var/log/suricata/eve.json` was demonstrated to isolate all logs belonging to a single network flow. 
-    ![Screenshot 7](screenshots/07_isolating_all_logs_by_a_single_network_flowid.png)
+  #Task 1: Examine a custom rule in Suricata
+    - The `cat custom.rules` command was used to display the network traffic rule.
+    - This rule was dissected to understand its three components: **Action** (`alert`), **Header**, and **Rule Options**.
+    
+![Screenshot 1](screenshots/01_action_header_rule_options.png)
+    
+  #Task 2: Trigger a custom rule in Suricata
+    - The `ls -l /var/log/suricata` command showed no files were present before execution.
+    - Suricata was executed using the command: `sudo suricata -r sample.pcap -S custom.rules -k none`. 
+    
+ ![Screenshot 2](screenshots/02_no_files_present_before_execution.png)
+    
+    - The subsequent `cat /var/log/suricata/fast.log` command displayed the alert entries triggered by the rule, confirming two instances of **"GET on wire"** alerts.
+    
+ ![Screenshot 3](screenshots/03_allert_entries_triggered_by_the_rule.png)
+    
+  #Task 3: Examine eve.json output
+    - The raw content of the `eve.json` file was displayed using `cat /var/log/suricata/eve.json`. 
+    
+ ![Screenshot 4](screenshots/04_raw_content_eve_json_file.png)
+    
+    - The `jq . /var/log/suricata/eve.json | less` command was used to format the JSON data, making it readable. 
+    
+ ![Screenshot 5](screenshots/05_formating_json_data_easier_to_read.png)
+    
+    - The `jq -c "[.timestamp,.flow_id,.alert.signature,.proto,.dest_ip]" /var/log/suricata/eve.json` command extracted key fields for easier correlation. 
+    
+ ![Screenshot 6](screenshots/06_extracting_b_key_fields.png)
+    
+    - A final, targeted query using `jq "select(.flow_id==X)" /var/log/suricata/eve.json` was demonstrated to isolate all logs belonging to a single network flow.
+    
+ ![Screenshot 7](screenshots/07_isolating_all_logs_by_a_single_network_flowid.png)
+    
 
 ---
 
