@@ -1,4 +1,4 @@
-Lab 16: Analyze Your First Packet with Wireshark
+Lab 16: Analyze My First Packet with Wireshark
 
 Platform: Qwiklabs
 Skill Area: Network Analysis, Cybersecurity, Packet Inspection
